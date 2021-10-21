@@ -137,5 +137,25 @@ while(i<=runs){
   i=i+1
 }
 
+#In the picture:
+##1. The red curve(using zoe app) grows more slowly than the black curve( in the first 90 days). 
+##   However, this group over a longer period of time 
+##   and at a higher peak than the general population. 
+##2. It is obvious that the green curve(random sample) is basically consistent with the black curve(population), 
+##   indicating that the normalized random sample is correct. 
+##3. From the 60th day to the 90th day, there was a significant increase in the curve
+
+#Inference:
+##1. As can be seen from the figure, people with a strong sense of protection may not be able to 
+##   keep away from the virus, but may take longer to spread the disease for some reason 
+##   (they miss the time of herd immunity, making their immunity lower than the population).
+##2. We were surprised to find that people with stronger awareness of protection had a higher peak value. 
+##   Another possibility is that the model selected cannot reflect the actual situation, 
+##   or the transfer probability may not be constant and may increase or decrease with the development of the epidemic. 
+##   While log Normal distribution may not fit the description of contact rate, we may try another model.
+##3. If this model is realistic, we can predict that the 60 days after the outbreak was due to 
+##   people's early attention to the outbreak (the virus has an incubation period)
+
+
 
 
