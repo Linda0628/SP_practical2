@@ -52,6 +52,7 @@ COVID19_MODEL <- function(
     sum_beta = sum(BETA[x==2])
     infected_prob  <- rep(0,N)
     infected_prob[which(x==0)] = LAMBDA * sum_beta * BETA[x==0]
+    
     u = runif(N)
     # the index in the S stage (before) one day Infection process
     index1 <- which(x==0) 
@@ -65,31 +66,39 @@ COVID19_MODEL <- function(
     index2 <- which(x==0) 
     # the index that from S stage to E stage (after) one day Infection process
     index <- index1[index1 %in% index2 == F] 
+    
     # the number of people in each stage (after) one day Infection process
     S[i] <- sum(x==0); E[i] <- sum(x==1)
     I[i] <- sum(x==2); R[i] <- sum(x==3)
+    
     #(1) new whole population
     new_nums[i] <- S[i-1] - S[i]
+    
     #(2) new cautious data (10%)
     index_cautious = cautious_ids[cautious_ids %in% index]
     new_nums_cautious[i] = length(index_cautious)
+    
     #(3) new random sample data (0.1%)
     index_sample = sample_ids[sample_ids %in% index]
     new_nums_sampled[i] = length(index_sample)
   }
+  
   list(new_nums=new_nums,
        new_nums_cautious=new_nums_cautious,
        new_nums_sampled=new_nums_sampled)
 }
 
+
 par(mfrow=c(2,2),mar=c(2.7,2.7,2,1))
 i=1 ; runs = 10
 while(i<=runs){
   res <- COVID19_MODEL() 
+  
   # standardized three different data
   new_nums = scale(res$new_nums)
   new_nums_cautious = scale(res$new_nums_cautious)
   new_nums_sampled = scale(res$new_nums_sampled)
+  
   # The maximum of three different data
   y_max=max(max(new_nums),max(new_nums_cautious),max(new_nums_sampled))
   # plot new whole population distribution
@@ -100,6 +109,7 @@ while(i<=runs){
   lines(new_nums_cautious,col=2,lty=1,lwd=2) 
   # Add new random sample data (0.1%) distribution
   lines(new_nums_sampled,col=3,lty=1,lwd=2) 
+  
   # peaks for three different curves
   abline(v=c(which.max(new_nums),
              which.max(new_nums_cautious), 
@@ -109,6 +119,7 @@ while(i<=runs){
               max(new_nums_cautious),
               max(new_nums_sampled)),
          col=c(1,2,3),lty=c(2,2,2))
+  
   # mark the peaks' coordinate in the plot
   text(c(which.max(new_nums),
          which.max(new_nums_cautious),
@@ -120,6 +131,7 @@ while(i<=runs){
          paste("(" , which.max(new_nums_cautious) , "," , max(new_nums_cautious) , ")"),
          paste("(" , which.max(new_nums_sampled) , "," , max(new_nums_sampled) , ")")),
        col=c(1,2,3),cex=c(0.7,0.7,0.7))
+  # label
   legend('center',c("whole population","cautious 10%","0.1% random sample"),
          col=c(1,2,3),bty='n',lty=c(1,1,1))
   i=i+1
