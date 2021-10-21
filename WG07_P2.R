@@ -82,8 +82,8 @@ COVID19_MODEL <- function(
        new_nums_sampled=new_nums_sampled)
 }
 
-par(mfrow=c(2,1),mar=c(2.7,2.7,2,1))
-i=1 ; runs = 2
+par(mfrow=c(2,2),mar=c(2.7,2.7,2,1))
+i=1 ; runs = 10
 while(i<=runs){
   res <- COVID19_MODEL() 
   # standardized three different data
