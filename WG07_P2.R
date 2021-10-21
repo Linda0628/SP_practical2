@@ -1,3 +1,6 @@
+# Group 7 : (Jiahe Sun) (Lingda Wang) (Qi Yu)
+# https://github.com/Linda0628/SP_practical2.git
+
 COVID19_MODEL <- function(  
           # initial susceptible population size
           N=5.5*1e6, 
