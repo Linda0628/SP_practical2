@@ -148,13 +148,23 @@ while(i<=runs){
 ##   indicating that the normalized random sample is correct. 
 ##3. From the 60th day to the 90th day, there was a significant increase in the curve
 
+##4. Compare the pictures given in the question, The figures we created in SEIR model coincide closely
+##   with the result of the actual daily Covid deaths data in the left graph
+##   (Among all 10 graphs, the first (third) graph in 'visualization result 1.png' is more fitted)
+##5. Combined with the actual situation diagram, we can see that in the 0-100 day , the peak time is about 80-90 day.
+##   this can be explained by R numbers(it was greater than 1 during this period),which means the 
+##   infected people have high probability to transmit virus.
+##   After that, the government imposed a national lockdown on day 95, R number drops below 1.
+##   As a result, the number of new daily cases has dropped sharply.
+
 #Inference:
 ##1. As can be seen from the figure, people with a strong sense of protection may not be able to 
 ##   keep away from the virus, but may take longer to spread the disease for some reason 
 ##   (they miss the time of herd immunity, making their immunity lower than the population).
 ##2. We were surprised to find that people with stronger awareness of protection had a higher peak value. 
-##   Another possibility is that the model selected cannot reflect the actual situation, 
-##   or the transfer probability may not be constant and may increase or decrease with the development of the epidemic. 
+##   One possibility is that the model selected cannot reflect the actual situation, 
+##   or the transfer probability may not be constant and may increase or decrease with the development of the epidemic.
+##   (In fact ,from the change of R number in actual scenarios, it indicates that E2I is not a constant) 
 ##   While log Normal distribution may not fit the description of contact rate, we may try another model.
 ##3. If this model is realistic, we can predict that the 60 days after the outbreak was due to 
 ##   people's early attention to the outbreak (the virus has an incubation period)
